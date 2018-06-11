@@ -1,0 +1,7 @@
+.issue-table-row {
+    cursor: pointer;
+}
+
+.issue-table-row:hover {
+    background: #fcfffc;
+}

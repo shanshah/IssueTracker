@@ -1,0 +1,10 @@
+.login-form__container {
+    width: 40%;
+    position: relative;
+    top: 20%;
+    background: lightsalmon;
+    box-shadow: 0px 24px 60px 0px #ccc;
+    margin: auto;
+    border: 1px dashed #ddd;
+    padding: 40px;
+}
