@@ -3,7 +3,7 @@ import { validateUserName, validatePassword } from '../../scripts/LoginFormValid
 
 const initialState = {
   loginFormValidation: {
-    username : { isValid: false, errMessage: [] },
+    username: { isValid: false, errMessage: [] },
     password: { isValid: false, errMessage: [] },
     confirmPassword: { isValid: false, errMessage: [] },
     email: { isValid: false, errMessage: [] },
@@ -21,12 +21,11 @@ const registerReducer = (state = initialState, action) => {
     case RegisterActionTypes.SET_USER_NAME:
       return { ...state, userData: { ...state.userData, username: action.payload }};
     case RegisterActionTypes.SET_EMAIL:
-      return { ...state, userData: { ...state.userData, email: action.payload }};
+      return { ...state, userData: { ...state.userData, email: action.payload } };
     case RegisterActionTypes.SET_PASSWORD:
-      return {...state, userData: { ...state.userData, password: action.payload}};
+      return { ...state, userData: { ...state.userData, password: action.payload }};
     case RegisterActionTypes.SET_CONFIRM_PASSWORD:
-      return {...state, userData: { ...state.userData, confirmPassword: action.payload}};
-      
+      return { ...state, userData: { ...state.userData, confirmPassword: action.payload } };
     // case RegisterActionTypes.VALIDATE_USER_NAME:
     //   return {
     //     ...state,

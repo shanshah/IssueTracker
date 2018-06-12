@@ -1,4 +1,4 @@
-import { isEmail, isLength, trim} from 'validator';
+import { isEmail, isLength, trim } from 'validator';
 
 const validateUserName = (userData) => {
   const email = userData.username.trim();
@@ -52,4 +52,4 @@ const validatePassword = (userData) => {
 export {
   validateUserName,
   validatePassword,
-}
+};

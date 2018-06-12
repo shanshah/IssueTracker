@@ -7,10 +7,11 @@ module.exports = {
   entry: './index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    // publicPath: '/dist/',
+    publicPath: '/dist/',
     filename: 'bundle.js',
   },
   devtool: 'source-map',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -26,7 +27,8 @@ module.exports = {
         },
       },
       {
-        test: /\.js?$/,
+        // test: /\.js?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
@@ -44,12 +46,12 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({ options: {} }),
     // HtmlWebpackPluginConfig,
     // new HtmlWebpackPlugin({
-    //   title: 'issue',
-    //   filename: './public/index.html',
+    //   title: 'Issue Tracker',
+    //   filename: 'index.html',
     //   inject: true,
     //   hash: true,
     //   xhtml: true,
-    //   template: './public/index.ejs',
+    //   template: 'index.ejs',
     // }),
   ],
   resolve: {
