@@ -18,20 +18,49 @@ const IssueTrackerActionTypes = {
 };
 
 const IssueTrackerActions = {
-  setIssueStatus: issueStatus => ({ type: IssueTrackerActionTypes.SET_ISSUE_STATUS, payload: issueStatus }),
-  setIssueOwner: issueOwner => ({ type: IssueTrackerActionTypes.SET_ISSUE_OWNER, payload: issueOwner }),
-  setIssueEffort: issueEffort => ({ type: IssueTrackerActionTypes.SET_ISSUE_EFFORT, payload: issueEffort }),
-  setIssueCompletionDate: issueCompletionDate => ({ type: IssueTrackerActionTypes.SET_ISSUE_COMPLETION_DATE, payload: issueCompletionDate }),
-  setIssueTitle: issueTitle => ({ type: IssueTrackerActionTypes.SET_ISSUE_TITLE, payload: issueTitle }),
-  setIssueList: issueList => ({ type: IssueTrackerActionTypes.SET_ISSUE_LIST, payload: issueList }),
-  deleteIssue: issueId => ({ type: IssueTrackerActionTypes.DELETE_ISSUE, payload: issueId }),
-  editIssue: payload => ({ type: IssueTrackerActionTypes.EDIT_ISSUE, payload: { isEditModalOpen: true, issueToBeUpdated: payload } }),
-  editIssueStatus: editedIssueStatus => ({ type: IssueTrackerActionTypes.EDIT_ISSUE_STATUS, payload: editedIssueStatus }),
-  editIssueOwner: editedIssueOwner => ({ type: IssueTrackerActionTypes.EDIT_ISSUE_OWNER, payload: editedIssueOwner }),
-  editIssueEffort: editedIssueEffort => ({ type: IssueTrackerActionTypes.EDIT_ISSUE_EFFORT, payload: editedIssueEffort }),
-  editIssueCompletionDate: editedIssueCompletionDate => ({ type: IssueTrackerActionTypes.EDIT_ISSUE_COMPLETION_DATE, payload: editedIssueCompletionDate }),
-  editIssueTitle: editedIssueTitle => ({ type: IssueTrackerActionTypes.EDIT_ISSUE_TITLE, payload: editedIssueTitle }),
-  closeIssueEditModal: () => ({ type: IssueTrackerActionTypes.CLOSE_ISSUE_EDIT_MODAL, payload: false }),
+  setIssueStatus: issueStatus => ({
+    type: IssueTrackerActionTypes.SET_ISSUE_STATUS, payload: issueStatus,
+  }),
+  setIssueOwner: issueOwner => ({
+    type: IssueTrackerActionTypes.SET_ISSUE_OWNER, payload: issueOwner,
+  }),
+  setIssueEffort: issueEffort => ({
+    type: IssueTrackerActionTypes.SET_ISSUE_EFFORT, payload: issueEffort,
+  }),
+  setIssueCompletionDate: issueCompletionDate => ({
+    type: IssueTrackerActionTypes.SET_ISSUE_COMPLETION_DATE, payload: issueCompletionDate,
+  }),
+  setIssueTitle: issueTitle => ({
+    type: IssueTrackerActionTypes.SET_ISSUE_TITLE, payload: issueTitle,
+  }),
+  setIssueList: issueList => ({
+    type: IssueTrackerActionTypes.SET_ISSUE_LIST, payload: issueList,
+  }),
+  deleteIssue: issueId => ({
+    type: IssueTrackerActionTypes.DELETE_ISSUE, payload: issueId,
+  }),
+  editIssue: payload => ({
+    type: IssueTrackerActionTypes.EDIT_ISSUE,
+    payload: { isEditModalOpen: true, issueToBeUpdated: payload },
+  }),
+  editIssueStatus: editedIssueStatus => ({
+    type: IssueTrackerActionTypes.EDIT_ISSUE_STATUS, payload: editedIssueStatus,
+  }),
+  editIssueOwner: editedIssueOwner => ({
+    type: IssueTrackerActionTypes.EDIT_ISSUE_OWNER, payload: editedIssueOwner,
+  }),
+  editIssueEffort: editedIssueEffort => ({
+    type: IssueTrackerActionTypes.EDIT_ISSUE_EFFORT, payload: editedIssueEffort,
+  }),
+  editIssueCompletionDate: editedIssueCompletionDate => ({
+    type: IssueTrackerActionTypes.EDIT_ISSUE_COMPLETION_DATE, payload: editedIssueCompletionDate,
+  }),
+  editIssueTitle: editedIssueTitle => ({
+    type: IssueTrackerActionTypes.EDIT_ISSUE_TITLE, payload: editedIssueTitle,
+  }),
+  closeIssueEditModal: () => ({
+    type: IssueTrackerActionTypes.CLOSE_ISSUE_EDIT_MODAL, payload: false,
+  }),
   getIssueData: query => (dispatch) => {
     let url = '/get-issues';
     if (query && query.status) {

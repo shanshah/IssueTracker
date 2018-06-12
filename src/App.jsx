@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LoginForm from './routes/login/LoginForm';
 
-class App extends React.Component {
-  
-  render () {
-    return <LoginForm />
-  }
-}
+const App = () =>
+  <LoginForm />;
 export default App;

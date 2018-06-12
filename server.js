@@ -8,10 +8,8 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
 
 const url = 'mongodb://shanshah:shaan78@ds249818.mlab.com:49818/issues-db';
-
-const STATIC_FILE_PATH = path.join(__dirname);
 let issuesDatabase;
-app.use('/', express.static(path.join(STATIC_FILE_PATH)));
+app.use('/', express.static(__dirname));
 app.use(bodyParser.json());
 
 MongoClient.connect(url, (err, database) => {
@@ -80,5 +78,5 @@ app.post('/update-issue', (req) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(STATIC_FILE_PATH, 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
