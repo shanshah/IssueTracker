@@ -71,7 +71,7 @@ app.post('/update-issue', (req) => {
       title: requestedData.title,
     },
   };
-  issuesDatabase.collection('issues').update({ '_id': ObjectId(requestedData.issueId) }, updatedValues, function(err, updateResponse) {
+  issuesDatabase.collection('issues').update({ '_id': ObjectId(requestedData.issueId) }, updatedValues, (err, updateResponse) => {
     if (err) throw err;
     console.log(`${updateResponse.result.nModified} document updated`);
   });

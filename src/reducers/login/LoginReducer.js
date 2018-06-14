@@ -20,7 +20,9 @@ const loginReducer = (state = initialState, action) => {
         userData: { ...state.userData, username: action.payload },
         loginFormValidation: {
           ...state.loginFormValidation,
-          username: { ...validateUserName({ ...state.loginFormValidation, username: action.payload }) },
+          username: {
+            ...validateUserName({ ...state.loginFormValidation, username: action.payload }),
+          },
         },
       };
     case LoginActionTypes.SET_PASSWORD:

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button, Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import ErrorMessageInput from '../common/ErrorMessage';
 
 const IssueEditModal = (props) => {
   IssueEditModal.PropTypes = {

@@ -20,6 +20,6 @@ import { Message } from 'semantic-ui-react';
 // };
 
 const ErrorMessage = props => (<Message negative>
-  <p>{props.errMsg}</p>
+  <p>{props.errorMessage}</p>
 </Message>);
 export default ErrorMessage;
