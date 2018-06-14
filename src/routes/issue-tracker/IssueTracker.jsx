@@ -66,7 +66,7 @@ class IssueTracker extends React.Component {
     this.props.dispatch(IssueTrackerActions.closeIssueEditModal());
   };
   handleIssueAddModal = () => {
-    this.setState({isIssueAddModalOpen: true});
+    this.setState({ isIssueAddModalOpen: true });
   };
   handleEditIssueStatus = (issueStatus) => {
     this.props.dispatch(IssueTrackerActions.editIssueStatus(issueStatus));
@@ -124,6 +124,7 @@ class IssueTracker extends React.Component {
           handleAddIssueEffort={this.handleAddIssueEffort}
           handleAddIssueCompletionDate={this.handleAddIssueCompletionDate}
           handleIssueAdd={this.handleIssueAdd}
+          issueFormValidation={this.props.issueTracker.issueFormValidation}
         />
         <IssueEdit
           isEditModalOpen={this.props.issueTracker.isEditModalOpen}
@@ -135,6 +136,7 @@ class IssueTracker extends React.Component {
           handleEditIssueCompletionDate={this.handleEditIssueCompletionDate}
           handleEditIssueTitle={this.handleEditIssueTitle}
           handleUpdateIssue={this.handleIssueUpdate}
+          issueFormValidation={this.props.issueTracker.issueFormValidation}
         />
         {/*<Pagination />*/}
       </div>

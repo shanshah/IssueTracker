@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Icon, Label, Menu, Table, Button, Grid, Form, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
+import ErrorMessageInput from '../common/ErrorMessage';
 
 const IssueAdd = (props) => {
+  console.log(props.issueFormValidation.owner.isValid);
   IssueAdd.PropTypes = {
     selectedDate: PropTypes.object,
     handleIssueOwner: PropTypes.func,
@@ -11,10 +13,11 @@ const IssueAdd = (props) => {
     handleIssueEffort: PropTypes.func,
     handleAddIssueCompletionDate: PropTypes.func,
     closeIssueAddModal: PropTypes.func,
-    handleIssueAdd : PropTypes.func,
+    handleIssueAdd: PropTypes.func,
     isIssueAddModalOpen: PropTypes.bool,
+    issueFormValidation: PropTypes.object,
   };
-  return (<Modal size="small" open={ props.isIssueAddModalOpen }>
+  return (<Modal size="small" open={props.isIssueAddModalOpen}>
     <Modal.Content image>
       <Form style={{ width: '100%' }}>
         <Form.Group widths="equal">
@@ -24,7 +27,6 @@ const IssueAdd = (props) => {
               placeholder="Issue Status"
               type="text"
               name="status"
-              // value={}
               onChange={(e) => { props.handleAddIssueStatus(e.target.value); }}
             >
               <option>New</option>
@@ -33,7 +35,6 @@ const IssueAdd = (props) => {
               <option>Fixed</option>
               <option>Closed</option>
             </select>
-            {/*<ErrorMessageInput messages={this.props.migraneResponseValidation.mobileNumber.errMsg}/>*/}
           </Form.Field>
         </Form.Group>
         <Form.Group widths="equal">
@@ -41,9 +42,13 @@ const IssueAdd = (props) => {
             <label htmlFor="issue-owner">Owner</label>
             <input
               type="text"
-              // value={editedIssueOwner}
               onChange={(e) => { props.handleAddIssueOwner(e.target.value); }}
             />
+            { props.issueFormValidation.owner.errMessage.length > 0 &&
+              <ErrorMessageInput
+                errorMessage={props.issueFormValidation.owner.errMessage}
+              />
+            }
           </Form.Field>
           <Form.Field>
             <label htmlFor="issue-effort">Effort</label>
@@ -53,7 +58,11 @@ const IssueAdd = (props) => {
               name="effort"
               onChange={(e) => { props.handleAddIssueEffort(e.target.value); }}
             />
-            {/* <ErrorMessageInput messages={this.props.migraneResponseValidation.confirmMobileNumber.errMsg} /> */}
+            { props.issueFormValidation.effort.errMessage.length > 0 &&
+              <ErrorMessageInput
+                errorMessage={props.issueFormValidation.effort.errMessage}
+              />
+            }
           </Form.Field>
         </Form.Group>
         <Form.Group widths="equal">
@@ -64,7 +73,11 @@ const IssueAdd = (props) => {
               selected={props.selectedDate}
               onChange={(date) => { props.handleAddIssueCompletionDate(date); }}
             />
-            {/*<ErrorMessageInput messages={this.props.migraneResponseValidation.confirmMobileNumber.errMsg} />*/}
+            {/*{ props.issueFormValidation.completionDate.errMessage.length > 0 &&*/}
+              {/*<ErrorMessageInput*/}
+                {/*errorMessage={props.issueFormValidation.completionDate.errMessage}*/}
+              {/*/>*/}
+            {/*}*/}
           </Form.Field>
           <Form.Field>
             <label htmlFor="issue-title">Issue title</label>
@@ -74,7 +87,11 @@ const IssueAdd = (props) => {
               name="title"
               onChange={(e) => { props.handleAddIssueTitle(e.target.value); }}
             />
-            {/*<ErrorMessageInput messages={this.props.migraneResponseValidation.confirmMobileNumber.errMsg} />*/}
+            { props.issueFormValidation.title.errMessage.length > 0 &&
+              <ErrorMessageInput
+                errorMessage={props.issueFormValidation.title.errMessage}
+              />
+            }
           </Form.Field>
         </Form.Group>
         <Form.Field>

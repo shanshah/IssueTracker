@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { browserHistory, Link } from 'react-router'
+import { browserHistory, Link } from 'react-router';
 import ErrorMessage from '../../components/common/ErrorMessage';
 import '../../stylesheets/components/LoginForm.css';
 import { LoginActions } from '../../actions/login/LoginActions';
@@ -71,7 +71,7 @@ class LoginForm extends Component {
                   {
                     this.props.login.loginFormValidation.username.errMessage.length > 0 &&
                     <ErrorMessage
-                      errMsg={this.props.login.loginFormValidation.username.errMessage}
+                      errorMessage={this.props.login.loginFormValidation.username.errMessage}
                     />
                   }
                 </Form.Field>
@@ -86,7 +86,7 @@ class LoginForm extends Component {
                   {
                     this.props.login.loginFormValidation.password.errMessage.length > 0 &&
                     <ErrorMessage
-                      errMsg={this.props.login.loginFormValidation.password.errMessage}
+                      errorMessage={this.props.login.loginFormValidation.password.errMessage}
                     />
                   }
                 </Form.Field>

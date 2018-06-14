@@ -1,5 +1,10 @@
 import { IssueTrackerActionTypes } from '../../actions/issue-tracker/IssueTrackerActions';
-// import { validateUserName, validatePassword } from '../../scripts/LoginFormValidation';
+import {
+  validateIssueOwner,
+  validateIssueEffort,
+  validateIssueTitle,
+  validateCompletionDate,
+} from '../../scripts/IssueFormValidation';
 import moment from 'moment';
 
 const initialState = {
@@ -13,6 +18,24 @@ const initialState = {
     effort: '',
     completionDate: '',
     title: '',
+  },
+  issueFormValidation: {
+    owner: {
+      isValid: false,
+      errMessage: [],
+    },
+    effort: {
+      isValid: false,
+      errMessage: [],
+    },
+    completionDate: {
+      isValid: false,
+      errMessage: [],
+    },
+    title: {
+      isValid: false,
+      errMessage: [],
+    },
   },
   newIssue: {
     status: '',
@@ -35,20 +58,36 @@ const issueTrackerReducer = (state = initialState, action) => {
     case IssueTrackerActionTypes.SET_ISSUE_OWNER:
       return {
         ...state,
+        issueFormValidation: {
+          ...state.issueFormValidation,
+          owner: {
+            ...validateIssueOwner({ ...state.issueFormValidation, owner: action.payload }),
+          },
+        },
         newIssue: { ...state.newIssue, owner: action.payload },
       };
     case IssueTrackerActionTypes.SET_ISSUE_EFFORT:
       return {
         ...state,
+        issueFormValidation: {
+          ...state.issueFormValidation,
+          effort: {
+            ...validateIssueEffort({ ...state.issueFormValidation, effort: action.payload }),
+          },
+        },
         newIssue: { ...state.newIssue, effort: action.payload },
-        // loginFormValidation: {
-        // ...state.loginFormValidation,
-        // username: {...validateUserName({...state.loginFormValidation, username: action.payload})}
-        // }
       };
     case IssueTrackerActionTypes.SET_ISSUE_COMPLETION_DATE:
       return {
         ...state,
+        // issueFormValidation: {
+        //   ...state.issueFormValidation,
+        //   completionDate: {
+        //     ...validateCompletionDate({
+        //       ...state.issueFormValidation, completionDate: action.payload,
+        //     }),
+        //   },
+        // },
         newIssue: { ...state.newIssue, completionDate: action.payload },
       };
     case IssueTrackerActionTypes.SET_ISSUE_TITLE:
